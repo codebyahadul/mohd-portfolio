@@ -39,7 +39,7 @@ function MainPage() {
                 id="menu-navbar "
                 className=" bg-black text-white flex justify-between items-center p-4 border-b border-gray-300"
             >
-                <div className="font-bold text-xl">Md Khabir Uddin</div>
+                <div className="font-bold text-xl">Mohd Moquit Khan</div>
 
                 <div className="hidden md:flex space-x-4 justify-center items-center">
                     <a href="#work" className="hover:text-gray-400 text-sm">
@@ -96,7 +96,6 @@ function MainPage() {
             <Hero />
             <TextMarquee />
             <About />
-            {/* <WhatWeDo /> */}
             <WhatIDo />
             <RecentProjects />
             <WorkExperience />
