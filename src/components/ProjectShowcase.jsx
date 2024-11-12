@@ -6,8 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Marquee from "./Marquee";
 import Card from "./Card";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
+import "swiper/css/navigation";
+import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -15,12 +17,42 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ProjectShowcase() {
   const projectShowRef = useRef(null);
   const projects = [
-    { id: 1, title: "Weather app", image: "/project1.png" },
-    { id: 2, title: "Landing page", image: "/project2.jpeg" },
-    { id: 3, title: "B2B App", image: "/project3.png" },
-    { id: 4, title: "E-commerce", image: "/project2.jpeg" },
-    { id: 5, title: "Marketing", image: "/project2.jpeg" },
-    { id: 6, title: "Portfolio Website", image: "/project2.jpeg" },
+    {
+      id: 1,
+      title: "Airstream",
+      link: "https://www.airstream.com/",
+      image: "/recent_project1.png",
+    },
+    {
+      id: 2,
+      title: "MOD PIZZA",
+        link:"https://modpizza.com/",
+      image: "/recent_project2.png",
+    },
+    {
+      id: 3,
+      title: "SONY MUSIC",
+      link:"https://www.sonymusic.com/",
+      image: "/recent_project3.png",
+    },
+    {
+      id: 4,
+      title: "Tech Crunch",
+      link:"https://techcrunch.com/",
+      image: "/recent_project4.png",
+    },
+    {
+      id: 5,
+      title: "Peiko",
+      link:"https://peiko.space/",
+      image: "/recent_project5.png",
+    },
+    {
+      id: 6,
+      title: "Cinnamon",
+      link:"https://www.cinnamon.agency/",
+      image: "/recent_project6.png",
+    },
   ];
   return (
     <div
@@ -42,15 +74,21 @@ export default function ProjectShowcase() {
         <div className="md:hidden">
           <div className="md:hidden">
             <Swiper
-              spaceBetween={10}
-              slidesPerView={1}
-              navigation={true}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              modules={[Autoplay, Navigation]}
+               spaceBetween={10}
+               slidesPerView={1}
+               // pagination= {{clickable:true}}
+               loop={true}
+               speed={1500}
+               autoplay={{
+                 delay: 500,
+                 disableOnInteraction: true,
+               }}
+               // disableOnInteraction={true}
+               navigation={{
+                 nextEl: ".custom-next",
+                 prevEl: ".custom-prev",
+               }}
+               modules={[Autoplay, Pagination, Navigation]}
             >
               {projects.map((card, index) => (
                 <SwiperSlide key={index}>
@@ -59,6 +97,15 @@ export default function ProjectShowcase() {
                   </div>
                 </SwiperSlide>
               ))}
+
+<div className="flex  gap-4 items-center justify-center " >
+                <div className="custom-prev text-[#4ade80] rounded-full">
+                  <IoIosArrowDropleftCircle className="cursor-pointer" size={40} />
+                </div>
+                <div className="custom-next text-[#4ade80] rounded-full">
+                  <IoIosArrowDroprightCircle className="cursor-pointer" size={40} />
+                </div>
+              </div>
             </Swiper>
           </div>
 
