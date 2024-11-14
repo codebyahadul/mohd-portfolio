@@ -61,7 +61,7 @@ export default function Footer() {
           >
             <SocialLink
               platform="Up work"
-              username="@jahid"
+              username="@mohdmoquitkhan"
               icon={<FaSquareUpwork className="w-8 h-8" />}
             />
           </a>
