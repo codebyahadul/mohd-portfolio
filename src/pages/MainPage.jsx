@@ -1,37 +1,12 @@
-import { useEffect, useState } from "react";
-import About from "../components/About";
-import Footer from "../components/Footer";
-import Hero from "../components/Hero";
-import ProjectShowcase from "../components/ProjectShowcase";
-import RecentProjects from "../components/RecentProjects";
-import Testimonial from "../components/Testimonial";
-import WhatIDo from "../components/WhatIDo";
-import WorkExperience from "../components/WorkExperience";
-import TextMarquee from "../components/TextMarquee";
+import {  useState } from "react";
 import Button from "../components/shared/Button";
-import gsap from "gsap";
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-
-gsap.registerPlugin(ScrollToPlugin);
+import { Link } from "react-router-dom";
 function MainPage() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(!isOpen);       
     };
-    useEffect(() => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute("href"));
 
-                gsap.to(window, {
-                    scrollTo: target,
-                    duration: 2, // Adjust for slower/faster scroll
-                    ease: "power2.out"
-                });
-            });
-        });
-    }, []);
     return (
         <div className="main-section ">
             {/* Navbar */}
@@ -39,16 +14,19 @@ function MainPage() {
                 id="menu-navbar "
                 className=" bg-black text-white flex justify-between items-center p-4 border-b border-gray-300"
             >
-                <div className="font-bold text-xl">Mohd Moquit Khan</div>
+                <div className="font-bold text-xl">S.M. Jahid</div>
 
                 <div className="hidden md:flex space-x-4 justify-center items-center">
-                    <a href="#work" className="hover:text-gray-400 text-sm">
+                <Link to={'/'} className="hover:text-gray-400 text-sm">
+                        Home
+                    </Link>
+                    <Link to={'/projects'} className="hover:text-gray-400 text-sm">
                         Work
-                    </a>
+                    </Link>
                     <a href="#about" className="hover:text-gray-400 text-sm">
                         About
                     </a>
-                    <Button text='Contact' bg="bg-[#4ade80]" size="px-6 py-2" textColor="text-white"/>
+                    <Button text='Contact' bg="bg-[#00e676]" size="px-6 py-2" textColor="text-white"/>
                 </div>
 
                 <button
@@ -73,18 +51,22 @@ function MainPage() {
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="absolute top-16 left-0 w-full bg-black text-white md:hidden">
-                        <div className="flex flex-col space-y-2 p-4">
-                            <a href="#work" className="hover:text-gray-400">
+                    <div className="absolute top-16 left-0 w-full  z-10 bg-black text-white md:hidden">
+                        <div className="flex  items-center gap-5 py-5 px-4">
+                        <Link to={'/'} className="hover:text-gray-400">
+                                Home
+                            </Link>
+                            <Link to={'/projects'} className="hover:text-gray-400">
                                 Work
-                            </a>
+                            </Link>
+                            
                             <a href="#about" className="hover:text-gray-400">
                                 About
                             </a>
                             <a
                                 href="#contact"
                                 className="bg-transparent border border-white 
-                            rounded-md px-4 py-2 hover:bg-white hover:text-black transition duration-300"
+                            rounded-md px-4 py-2 hover:bg-white w-fit hover:text-black transition duration-300"
                             >
                                 Contact
                             </a>
@@ -92,17 +74,6 @@ function MainPage() {
                     </div>
                 )}
             </nav>
-
-            <Hero />
-            <TextMarquee />
-            <About />
-            <WhatIDo />
-            <RecentProjects />
-            <WorkExperience />
-            <Testimonial />
-            <ProjectShowcase />
-            <Footer />
-
         </div>
     );
 }
